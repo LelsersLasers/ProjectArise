@@ -1,5 +1,5 @@
 Flask==3.0.0
 numpy==1.26.2
 opencv-python-headless==4.8.1.78
-tensorflow==2.15.0.post1
+tensorflow==2.15.0
 keras==2.15.0
