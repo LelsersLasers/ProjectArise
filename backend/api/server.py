@@ -1,9 +1,9 @@
 import flask
-import flask_cors
+# import flask_cors
 
 import json
 
-import pprint
+# import pprint
 
 import keras
 import keras.models
@@ -35,20 +35,20 @@ LABELS = [
 app = flask.Flask(__name__)
 
 model = keras.models.load_model(MODEL_LOAD_PATH)
-print(model.summary())
+# print(model.summary())
 
 def create_response(value):
     response = flask.jsonify(value)
     return response
 
 @app.route("/classify", methods=["POST"])
-@flask_cors.cross_origin()
+# @flask_cors.cross_origin()
 def classify():
     image_bs64 = flask.request.json.get("image_b64", None)
     if image_bs64 is None:
         return create_response({"error": "No image_b64 provided"})
     
-    print(f"Received image: {image_bs64[:25]}...")
+    # print(f"Received image: {image_bs64[:25]}...")
 
     np_arr = np.frombuffer(base64.b64decode(image_bs64), np.uint8)
     image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
@@ -69,11 +69,11 @@ def classify():
     predictions_with_labels.sort(reverse=True, key=lambda x: x["confidence"])
     best_predictions = predictions_with_labels[:5]
     
-    pprint.pprint(best_predictions)
+    # pprint.pprint(best_predictions)
     return create_response(best_predictions)
 
 @app.route("/remove/<label>", methods=["GET"])
-@flask_cors.cross_origin()
+# @flask_cors.cross_origin()
 def remove(label):
     with open(REMOVE_JSON_PATH, "r") as f:
         remove_json = json.load(f)
@@ -82,7 +82,7 @@ def remove(label):
     if remove_instructions is None:
         remove_instructions = remove_json.get("lipsum")
 
-    pprint.pprint(remove_instructions)
+    # pprint.pprint(remove_instructions)
     return create_response(remove_instructions)
     # app.run(debug=False, port=PORT, host="0.0.0.0", processes=1, threaded=False)
 
