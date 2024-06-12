@@ -5,11 +5,12 @@ import json
 
 import pprint
 
+import keras
+import keras.models
+
 import base64
 import numpy as np
 import cv2
-
-import cnn
 
 
 PORT = 5000
@@ -36,7 +37,8 @@ CONCLUSIVE_CUTOFF = 0.5
 def main():
     app = flask.Flask(__name__)
 
-    model = cnn.load_model(MODEL_LOAD_PATH)
+    model = keras.models.load_model(MODEL_LOAD_PATH)
+    print(model.summary())
 
     def create_response(value):
         response = flask.jsonify(value)
