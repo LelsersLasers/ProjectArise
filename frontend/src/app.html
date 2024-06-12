@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="%sveltekit.assets%/favicon.png" />
+        <link rel="apple-touch-icon" href="%sveltekit.assets%/favicon.png" />
+
+        <meta name="description" content="AI-assisted removal of invasive species for environmental restoration" />
+
+        %sveltekit.head%
+    </head>
+    
+    <style>
+        :root {
+            --darkGreen: rgb(20, 48, 7);
+            --bgYellow:  rgb(255, 253, 233);
+            --bgGreen:   rgb(244, 255, 241);
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+
+            background-color: var(--bgYellow);
+
+            font-family: 'Times New Roman', Times, serif;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+
+    <body data-sveltekit-preload-data="hover">
+        %sveltekit.body%
+        <!-- <div id="sveltebody" style="display: contents"></div> -->
+    </body>
+</html>
