@@ -1,5 +1,5 @@
 import flask
-# import flask_cors
+import flask_cors
 
 import json
 
@@ -38,7 +38,7 @@ def create_response(value):
     return response
 
 @app.route("/classify", methods=["POST"])
-# @flask_cors.cross_origin()
+@flask_cors.cross_origin()
 def classify():
     image_bs64 = flask.request.json.get("image_b64", None)
     if image_bs64 is None:
@@ -66,7 +66,7 @@ def classify():
     return create_response(best_predictions)
 
 @app.route("/remove/<label>", methods=["GET"])
-# @flask_cors.cross_origin()
+@flask_cors.cross_origin()
 def remove(label):
     with open(REMOVE_JSON_PATH, "r") as f:
         remove_json = json.load(f)
