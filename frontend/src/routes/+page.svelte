@@ -97,7 +97,7 @@
             if (quota_error_max == 1) localStorage.clear();
         
             if (quota_error_max > 0) {
-                quota_error--;
+                quota_error_max--;
                 saveToLocalStorage();
             }
         }
@@ -112,8 +112,6 @@
         input_b64 = ls_obj["input_b64"];
         results = ls_obj["results"];
         saveToLocalStorage(false);
-
-        const a = JSON.parse(localStorage.getItem(LS_KEY));
     }
 
     onMount(() => {
