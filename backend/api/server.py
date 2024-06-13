@@ -11,8 +11,8 @@ import numpy as np
 import cv2
 
 
-MODEL_LOAD_PATH = "arise_fullsave"
-REMOVE_JSON_PATH = "remove.json"
+MODEL_LOAD_PATH = "/home/projectarise/ProjectArise/backend/api/arise_fullsave"
+REMOVE_JSON_PATH = "/home/projectarise/ProjectArise/backend/api/remove.json"
 INPUT_SIZE = 256
 LABELS = [
     "aegilops_triuncialis",
