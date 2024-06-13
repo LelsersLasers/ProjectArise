@@ -3,8 +3,10 @@ import flask_cors
 
 import json
 
-import keras
-import keras.models
+# import keras
+# import keras.models
+import tflite_runtime.interpreter
+
 
 import base64
 import numpy as np
@@ -31,7 +33,14 @@ LABELS = [
 
 app = flask.Flask(__name__)
 
-model = keras.models.load_model(MODEL_LOAD_PATH)
+# model = keras.models.load_model(MODEL_LOAD_PATH)
+interpreter = tflite_runtime.interpreter.Interpreter(model_path=MODEL_LOAD_PATH)
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+
 
 def create_response(value):
     response = flask.jsonify(value)
@@ -51,7 +60,11 @@ def classify():
 
     cnn_input = np.expand_dims(image, axis=0)
 
-    np_prediction = model.predict(cnn_input)[0]
+    interpreter.set_tensor(input_details[0]['index'], cnn_input)
+    interpreter.invoke()
+
+    # np_prediction = model.predict(cnn_input)[0]
+    np_prediction = interpreter.get_tensor(output_details[0]['index'])[0]
     prediction = map(lambda x: float(x), list(np_prediction))
     predictions_with_labels = list(map(
         lambda prediction_and_label: {
