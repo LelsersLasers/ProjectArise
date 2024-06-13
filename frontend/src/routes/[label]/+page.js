@@ -1,5 +1,5 @@
-// const FLASK_URL = "http://64.98.192.13:3001";
-const FLASK_URL = "http://localhost:3001";
+const FLASK_URL = "http://64.98.192.13:3001";
+// const FLASK_URL = "http://localhost:3001";
 
 export const load = async ({ params }) => {
 	const { label } = params;
