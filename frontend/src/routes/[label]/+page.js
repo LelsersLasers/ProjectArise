@@ -1,5 +1,4 @@
-const FLASK_URL = "http://127.0.0.1:5000/";
-// const FLASK_URL = "http://192.168.86.43:5000/";
+const FLASK_URL = "http://64.98.192.13:30001";
 
 export const load = async ({ params }) => {
 	const { label } = params;
