@@ -11,6 +11,7 @@ import numpy as np
 import cv2
 
 
+PORT = 5001
 MODEL_LOAD_PATH = "/home/projectarise/ProjectArise/backend/api/arise_fullsave"
 REMOVE_JSON_PATH = "/home/projectarise/ProjectArise/backend/api/remove.json"
 INPUT_SIZE = 256
@@ -80,3 +81,6 @@ def remove(label):
 @app.route('/')
 def home():
     return 'Project Arise Backend'
+
+if __name__ == "__main__":
+    app.run(port=PORT, host="0.0.0.0")
