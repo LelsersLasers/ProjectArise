@@ -12,7 +12,7 @@ import cv2
 
 
 PORT = 3001
-MODEL_LOAD_PATH = "arise_fullsave_2-9"
+MODEL_LOAD_PATH = "/home/projectarise/ProjectArise/backend/arise_fullsave_2-9"
 REMOVE_JSON_PATH = "remove.json"
 INPUT_SIZE = 256
 LABELS = [
