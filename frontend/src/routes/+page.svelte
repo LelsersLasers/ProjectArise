@@ -2,9 +2,9 @@
     import { onMount } from 'svelte';
     import BulletList from '$lib/BulletList.svelte';
 
-    // const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
+    const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
     // const FLASK_URL = 'http://64.98.192.13:3001/';
-    const FLASK_URL = 'http://localhost:3001/';
+    // const FLASK_URL = 'http://localhost:3001/';
 
     const LS_KEY = 'ARISE';
 
