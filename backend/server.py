@@ -32,8 +32,6 @@ LABELS = [
 
 app = flask.Flask(__name__)
 
-model = keras.models.load_model(MODEL_LOAD_PATH)
-model.save_weights("arise_weights.h5")
 
 def create_response(value):
     response = flask.jsonify(value)
@@ -42,6 +40,9 @@ def create_response(value):
 @app.route("/classify", methods=["POST"])
 @flask_cors.cross_origin()
 def classify():
+    model = keras.models.load_model(MODEL_LOAD_PATH)
+
+
     image_bs64 = flask.request.json.get("image_b64", None)
     if image_bs64 is None:
         return create_response({"error": "No image_b64 provided"})
