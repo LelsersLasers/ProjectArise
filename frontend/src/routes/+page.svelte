@@ -1,14 +1,18 @@
 <script>
     import { onMount } from 'svelte';
-    import { goto } from '$app/navigation';
 
-    export let data;
-
-    const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
+    // const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
     // const FLASK_URL = 'http://64.98.192.13:3001/';
-    // const FLASK_URL = 'http://localhost:3001/';
+    const FLASK_URL = 'http://localhost:3001/';
 
     const LS_KEY = 'ARISE';
+
+    let title = 'Project ARISE';
+
+    let overlay = false;
+    let remove_plant = "";
+    let remove_instructions = [];
+
 
     let fileInput;
     let img;
@@ -79,55 +83,34 @@
     }
 
     function resultClick(i) {
-        saveToLocalStorage(true);
-        const label = results[i]['label']
-        goto('/' + label);
+        remove_plant = results[i]['label_display'];
+        remove_instructions = results[i]['remove_instructions'];
+        overlay = true;
     }
 
 
-    let quota_error_max = 2;
-    function saveToLocalStorage(save) {
-        const ls_obj = {
-            'input_b64': input_b64,
-            'results': results,
-            'save': save,
-        }
-        try {
-            localStorage.setItem(LS_KEY, JSON.stringify(ls_obj));
-        } catch (e) {
-            if (quota_error_max == 2) localStorage.removeItem(LS_KEY);
-            if (quota_error_max == 1) localStorage.clear();
-        
-            if (quota_error_max > 0) {
-                quota_error_max--;
-                saveToLocalStorage();
-            }
-        }
-    }
-    function tryLoadFromLocalStorage() {
-        const ls_obj = JSON.parse(localStorage.getItem(LS_KEY));
-
-        if ((ls_obj == null || !ls_obj['save']) && data.restore) {
-            window.location.href = '/'
-        }
-
-        input_b64 = ls_obj['input_b64'];
-        results = ls_obj['results'];
-        saveToLocalStorage(false);
+    function back() {
+        overlay = false;
     }
 
     onMount(() => {
-        document.querySelector('html').style.backgroundColor = 'var(--bgYellow)';
-
-        if (data.restore) {
-            tryLoadFromLocalStorage();
-        }
         loading = false;
     });
 </script>
 
 <style>
-    img {
+    #underlay {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: var(--bgYellow);
+
+        padding-top: 24px;
+    }
+
+    #underlay img {
         display: block;
         
         width: 100%;
@@ -135,7 +118,7 @@
 
         max-height: 300px;
 
-        margin-top: 24px;
+        /* margin-top: 24px; */
         margin-bottom: 24px;
         margin-left: auto;
         margin-right: auto;
@@ -144,18 +127,18 @@
         border: 12px solid var(--darkGreen);
     }
 
-    .info {
+    #underlay .info {
         text-align: center;
     }
 
 
-    #results {
+    #underlay #results {
         width: 100%;
         max-width: 325px;
 
         margin: 0 auto;
     }
-    .result {
+    #underlay .result {
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 12px;
@@ -170,52 +153,141 @@
 
         cursor: pointer;
     }
-    .resultBase {
+    #underlay .resultBase {
         display: inline-block;
         margin: 0;
         padding: 0;
     }
-    .resultConfidence {
+    #underlay .resultConfidence {
         font-weight: bold;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .resultLabel {
+    #underlay .resultLabel {
         text-transform: capitalize;
         font-style: italic;
     }
-    .resultArrow {
+    #underlay .resultArrow {
         float: right;
     }
 
-    .none {
+    #underlay .none {
         display: none;
+    }
+
+
+    #overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bgGreen);
+        z-index: 2;
+    }
+
+    #overlay h1 {
+        text-align: center;
+        text-transform: capitalize;
+        font-style: italic;
+        margin-top: 80px;
+        margin-bottom: 50px;
+        font-weight: normal;
+    }
+
+    #overlay h3 {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: normal;
+    }
+
+    #overlay ol {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+
+        padding-left: 0;
+
+        list-style: none;
+        counter-reset: item;
+    }
+    #overlay li {
+        counter-increment: item;
+        margin-bottom: 15px;
+    }
+    #overlay li:before {
+        content: counter(item) ".) ";
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    #overlay .stickyFooter {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background: var(--darkGreen);
+        color: white;
+        width: 97vw;
+
+        margin-bottom: 2vw;
+        margin-top: 3vw;
+        margin-left: 1.5vw;
+        margin-right: 1.5vw;
+        border-radius: 20px;
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        cursor: pointer;
     }
 </style>
 
 
 <svelte:head>
-    <title>Project Arise</title>
+    <title>{title}</title>
 </svelte:head>
 
 
-<input class="none" type="file" id="file" name="file" accept="image/*" on:input={upload} bind:this={fileInput} />
 
-<img src={input_b64} on:click={imageClick} bind:this={img} />
+{#if overlay}
+    <div id="overlay">
+        <h1>{remove_plant}</h1>
 
+        <h3>HOW TO REMOVE</h3>
 
-{#if loading}
-    <p class="info">{loading_text}</p>
-{:else if results == null}
-    <p class="info">Click icon to take or upload a photo</p>
+        <ol>
+            {#each remove_instructions as step, i}
+                <li>{step}</li>
+            {/each}
+        </ol>
+
+        <div class="stickyFooter zeroBottomMargin textAlignCenter" on:click={back}>
+            Back
+        </div>
+    </div>
 {:else}
-    <p class="info">Tap on an item to view removal instructions</p>
-    <div id="results">
-        {#each results as result, i}
-            <div class="result" on:click={() => resultClick(i)}>
-                <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
-                <p class="resultBase resultLabel">{result["label_display"]}</p>
-                <p class="resultBase resultArrow">&rsaquo;</p>
+    <div id="underlay">
+        <input class="none" type="file" id="file" name="file" accept="image/*" on:input={upload} bind:this={fileInput} />
+
+        <img src={input_b64} on:click={imageClick} bind:this={img} />
+
+        {#if loading}
+            <p class="info">{loading_text}</p>
+        {:else if results == null}
+            <p class="info">Click icon to take or upload a photo</p>
+        {:else}
+            <p class="info">Tap on an item to view removal instructions</p>
+            <div id="results">
+                {#each results as result, i}
+                    <div class="result" on:click={() => resultClick(i)}>
+                        <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
+                        <p class="resultBase resultLabel">{result["label_display"]}</p>
+                        <p class="resultBase resultArrow">&rsaquo;</p>
+                    </div>
+                {/each}
             </div>
-        {/each}
+        {/if}
     </div>
 {/if}

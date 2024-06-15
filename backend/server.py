@@ -12,8 +12,8 @@ import cv2
 
 
 PORT = 3001
-MODEL_LOAD_PATH = "/home/projectarise/ProjectArise/backend/arise_fullsave_2-9"
-REMOVE_JSON_PATH = "/home/projectarise/ProjectArise/backend/remove.json"
+MODEL_LOAD_PATH = "arise_fullsave_2-9"
+REMOVE_JSON_PATH = "remove.json"
 INPUT_SIZE = 256
 LABELS = [
     "aegilops_triuncialis",
@@ -42,6 +42,10 @@ def create_response(value):
 def classify():
     model = keras.models.load_model(MODEL_LOAD_PATH)
 
+    with open(REMOVE_JSON_PATH, "r") as f:
+        remove_json = json.load(f)
+
+
 
     image_bs64 = flask.request.json.get("image_b64", None)
     if image_bs64 is None:
@@ -59,7 +63,8 @@ def classify():
     predictions_with_labels = list(map(
         lambda prediction_and_label: {
             "confidence": prediction_and_label[0],
-            "label": prediction_and_label[1]
+            "label": prediction_and_label[1],
+            "remove_instructions": remove_json.get(prediction_and_label[1], remove_json.get("lipsum"))
         },
         zip(prediction, LABELS))
     )
@@ -67,18 +72,6 @@ def classify():
     best_predictions = predictions_with_labels[:5]
 
     return create_response(best_predictions)
-
-@app.route("/remove/<label>", methods=["GET"])
-@flask_cors.cross_origin()
-def remove(label):
-    with open(REMOVE_JSON_PATH, "r") as f:
-        remove_json = json.load(f)
-    
-    remove_instructions = remove_json.get(label, None)
-    if remove_instructions is None:
-        remove_instructions = remove_json.get("lipsum")
-
-    return create_response(remove_instructions)
 
 @app.route('/')
 def home():
