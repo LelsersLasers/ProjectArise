@@ -1,6 +1,9 @@
 # Project Arise
 
-AI-assisted removal of invasive species for environmental restoration
+AI-assisted removal of invasive species for environmental restoration.
+- Live at: https://projectarise.vercel.app/
+	- Bbackend: https://projectarise.pythonanywhere.com/
+- Main site: https://www.project-arise.org/
 
 ## The Team
 
