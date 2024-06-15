@@ -6,18 +6,25 @@
 <style>
 	ul {
 		width: 85%;
-        /* max-width: 300px; */
+        max-width: 300px;
         margin: 0 auto;
 
         padding-left: 0;
 
         list-style: none;
         counter-reset: item;
+
+		padding-left: 18px;
 	}
 	li {
 		margin-bottom: 10px;
+		position: relative;
 	}
 	li:before {
+		position: absolute;
+		vertical-align: middle;
+		left: -16px;
+
         content: "-";
         font-weight: bold;
         display: inline-block;
