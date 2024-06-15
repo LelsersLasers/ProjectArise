@@ -13,7 +13,7 @@ import cv2
 
 PORT = 3001
 MODEL_LOAD_PATH = "/home/projectarise/ProjectArise/backend/arise_fullsave_2-9"
-REMOVE_JSON_PATH = "remove.json"
+REMOVE_JSON_PATH = "/home/projectarise/ProjectArise/backend/remove.json"
 INPUT_SIZE = 256
 LABELS = [
     "aegilops_triuncialis",
