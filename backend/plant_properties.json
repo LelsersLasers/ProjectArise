@@ -1,0 +1,299 @@
+[
+    {
+        "scientificName": "aegilops triuncialis",
+        "commonName": "Barbed Goatgrass",
+        "description": [
+            "Usually 20-50 cm tall (8-20 inches)",
+            "Grey-green with fine hairs, reddish purple at full maturity"
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "Grasp the plant at the base and pull upwards, removing the whole root system.",
+            "Put the pulled plants in bags or tarps and dispose of them in dumpsters to prevent seed spread."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: barb goatgrass",
+            "EDIBLENESS: Not edible.",
+            "ORIGIN: Western Asia and Mediterranean Europe",
+            "Grows in rangelands, grasslands, and oak woodlands.",
+            "Barbed goatgrass is easy to remove in small patches, but large areas can be problematic. If a large patch is spotted, notify San Diego officials following the short instructions on this page: https://www.sandiegocounty.gov/content/sdc/awm/ipm_sdwma/contact-us-report-an-invasive-weed-.html"
+        ]
+    },
+    {
+        "scientificName": "arundo donax",
+        "commonName": "Giant Reed",
+        "description": [
+            "Large grasses up to about 20 feet tall with hollow cane-like stems that are about 0.25 to 2 inches thick." ,
+            "Leaves are stiff, up to 3 feet long and 3 inches wide. They are smooth, round at the base, and taper to a long point."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "Small sprouts can be removed by hand, but be careful to dig up and collect all root fragments — arundo reroots very easily." ,
+            "For slightly taller arundo plants, cut the stalks down to ground level, then dig out and remove all roots and root fragments",
+            "Dry out the roots and then dispose of them. Once completely dry, the sprouts are no longer a hazard for spreading.",
+            "Mature patches of arundo may require chemical removal."
+        ],
+        "chemicalRemoval": [
+            "For large and mature patches of arundo, first, cut the mature canes to ground level." ,
+            "Regrowth should be treated with an environmentally safe herbicide." ,
+            "Cut arundo canes can be chipped to return the carbon to the soil; this prevents the roots along the cane from regrowing."
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: Spanish cane, Colorado river reed, carrizo, arundo",
+            "EDIBLENESS: Young shoots can be used like bamboo or artichoke. Arundo leaves are edible, though quite bitter — this bitterness can be partially removed through boiling. Young arundo can also be used as feed for livestock.",
+            "ORIGIN: countries surrounding the Mediterranean Sea",
+            "Grows near lakes, streams, wetlands, and man-made waterways, particularly near disturbed native riparian vegetation."
+        ]
+    },
+    {
+        "scientificName": "centaurea calcitrapa",
+        "commonName": "Purple Star Thistle",
+        "description": [
+            "Grows up to 3 feet tall.",
+            "It is sometimes covered in cobwebby hairs, but often smooths out with maturity.",
+            "Has spiny heads and narrow flowerheads of lavender to deep purple flowers with a rosette shape." ,
+            "Lower leaves are very divided, upper leaves are narrow and undivided."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "Hand pulling or hoeing can control small infestations; grasp the plant at the base and pull upwards, removing as much of the roots as possible." ,
+            "Process must be repeated several times a year in order to reduce population.",
+            "Mowing will not kill the plants but can reduce seed production if timed at full bloom.",
+            "Plants should be removed (at least 1.5” of taproot removed below ground) and disposed of as garbage."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: red star thistle, common star thistle",
+            "EDIBLENESS: All parts of thistles are edible, raw or cooked." ,
+            "ORIGIN: Mediterranean region, southern Europe and northern Africa",
+            "Grows in fields, roadsides, disturbed areas, grasslands and overgrazed rangelands."
+        ]
+    },
+    {
+        "scientificName": "centaurea stoebe",
+        "commonName": "Spotted Knapweed",
+        "description": [
+            "1-2 foot tall rosette base.",
+            "Has 8 inch lobed basal leaves." ,
+            "Pink or purple flowers; black-tipped phyllaries make it appear “spotted”"
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants.",
+            "Skin exposure may cause skin irritation."
+        ],
+        "manualRemoval": [
+            "Hand pulling, hoeing, or digging works for small infestations.",
+            "Must be repeated as much as 2 to 4 times per year for multiple years",
+            "Plants should be removed before flowers have opened and gone to seed, and roots should be removed as much as possible because spotted knapweed can regrow from root fragments.",
+            "Dispose of the plant if flowers have seeded; otherwise may be used for mulching.",
+            "Do not mow — this may produce side branches with more flowers."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: white knapweed, tumble knapweed",
+            "EDIBLENESS: Not edible; causes allergic reactions and toxicity if consumed in large quantities.",
+            "ORIGIN: Europe and western Asia.",
+            "Grows in pastures, forest and field margins, mining areas, unmaintained gravel pits, and along roads, railways, and trails.",
+            "Highest rated invasive plant in San Diego."
+        ]
+    },
+    {
+        "scientificName": "cortaderia selloana",
+        "commonName": "Pampas Grass",
+        "description": [
+            "Can grow up to about 13 feet tall and 6 feet wide.",
+            "Its leaves are V-shaped in cross-section and bluish green in color.",
+            "Has arching stems and fluffy, silvery white/pale pink plumes."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants — pampas grass has serrated leaves that will cut skin.",
+            "Eye protection is also a suggested precaution."
+        ],
+        "manualRemoval": [
+            "Smaller plants under about 3 feet are hand-pullable, but larger plants are not." ,
+            "For small plants, grasp the plant at the base and pull upwards, removing as much of the roots as possible." 
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "EDIBLENESS: Not edible.",
+            "ORIGIN: South America",
+            "Forms clumps along roadsides, steep cliffs, river banks, and open areas that have been disturbed by human activities or natural disturbances."
+        ]
+    },
+    {
+        "scientificName": "cynara cardunculus",
+        "commonName": "Artichoke Thistle",
+        "description": [
+            "Spiny, lobed, grey-green leaves and grooved stalks with spines.",
+            "Between May and July, plants can form spiny, bright purple flowers 2-3 inches in diameter."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants.",
+            "Spines can be quite sharp and may cut through gloves. Handle with caution and avoid large plants if hand-pulling."
+        ],
+        "manualRemoval": [
+            "Using gloves, pull or dig out only very small infestations or seedlings — grasp the small plants at the base and pull upwards, removing as much of the roots as possible, as artichoke thistle can reroot very easily.",
+            "Larger plants will require chemical removal."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: cardoon." ,
+            "EDIBLENESS: Its stalks can be eaten raw or cooked, but not the flowers.",
+            "ORIGIN: Mediterranean region",
+            "Grows in disturbed open sites, including grassland, chaparral, coastal scrub, and riparian areas."
+        ]
+    },
+    {
+        "commonName": "Carnation Spurge",
+        "scientificName": "euphorbia terracina",
+        "description": [
+            "Hairless, slender, and can branch from the base and further up the plant.",
+            "Stems are green to reddish in color, especially near the base.",
+            "Flowers are round cup-shaped buds and surrounded by yellow-green petal-like leafy structures."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants.",
+            "Be wary of any milky white sap exuding from broken stems — it can cause skin irritation."
+        ],
+        "manualRemoval": [
+            "Using gloves, hand-pull smaller plants and use a hoe or shovel for larger plants." ,
+            "Make sure to remove the entire plant and all of its roots — carnation spurge can regrow from root fragments left on the ground."  ,
+            "Put the pulled plants in bags or tarps and dispose of them in dumpsters to prevent seed spread or root regrowth."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: Geraldton carnation weed",
+            "EDIBLENESS: Not edible and toxic to digest.",
+            "ORIGIN: Mediterranean region",
+            "Forms dense patches in disturbed grasslands, coastal bluffs, dunes, salt marshes, riparian areas and oak woodlands." ,
+            "Carnation spurge is extremely invasive as it is extremely competitive. If spotted, notify San Diego city officials following the short instructions on this page: https://www.sandiegocounty.gov/content/sdc/awm/ipm_sdwma/contact-us-report-an-invasive-weed-.html"
+        ]
+    },
+    {
+        "scientificName": "hypericum canariense",
+        "commonName": "Canary Island St. John's Wort",
+        "description": [
+            "Shrub that can grow up to 1 meter, or 3.3 feet tall.",
+            "Its flowers have five bright to deep yellow petals, each about a centimeter long, and numerous stamens in the center.",
+            "Its leaves are whorled."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "Small infestations can be hand-pulled, though larger areas may need chemical sprays.",
+            "Grasp the plant at the base and pull upwards, removing the whole root system as Canary Island St. John’s wort can reroot from small root fragments.",
+            "Put the pulled plants in bags or tarps and dispose of them in dumpsters to prevent seed spread."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "EDIBLENESS: Not edible, may be toxic to some animals." ,
+            "ORIGIN: Canary Islands and Madeira",
+            "Grows in low-moisture scrub, forested slopes, and disturbed areas, especially in coastal sage scrub and grassland habitats."
+        ]
+    },
+    {
+        "scientificName": "lepidium latifolium",
+        "commonName": "Perennial Pepperweed",
+        "description": [
+            "Generally 1-3 feet tall, but can grow up to 6 feet tall.",
+            "Has many stems and waxy leaves with a prominent, whitish middle vein.",
+            "Individual flowers are small, white, and have 4 petals; its flowers grow in large clusters at the top of its stems." 
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "Seedlings and small patches can be hand-pulled or dug out of the ground, but as much of the root system must be removed as possible." ,
+            "If hand-pulling, grasp the plant at the base and pull upwards, removing as much of the roots as possible." ,
+            "Its root system is very extensive and small root fragments left in the ground can sprout and continue to spread; large infestations require chemical treatment to kill its roots."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: perennial peppercress, broadleafed pepperweed, pepperwort, peppergrass, dittander, dittany, tall whitetop",
+            "EDIBLENESS: All parts of this plant are edible; best eaten after boiled once and soaked for 2 days (to remove bitterness).",
+            "ORIGIN: southern Europe and western Asia",
+            "Grows along roadsides, in hay fields, in disturbed soils, and primarily in wetlands."
+        ]
+    },
+    {
+        "scientificName": "lythrum salicaria",
+        "commonName": "Purple Loosestrife",
+        "description": [
+            "Stands about 3-10 feet tall (averages 5 feet).",
+            "Has purple flowers (usually July through September) that are located in long spikes at the tip of its branches.",
+            "Has woody stems and a lance-like shape." 
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants."
+        ],
+        "manualRemoval": [
+            "The best time to remove purple loosestrife from the soil is prior to seeding time (August/September). After this time, produced seeds cannot be eliminated from the environment." ,
+            "Small infestations of purple loosestrife (< 100 plants) can be somewhat controlled through hand digging/pulling." ,
+            "Mowing or cutting will prevent purple loosestrife from flowering, but will not kill the plants.",
+            "Purple loosestrife can regrow from root fragments left in the soil; all root fragments should be removed, put in bags, and disposed of as garbage.",
+            "If hand-pulling during flowering (July-September), cut off the flower stalk and bag it before removing the plant and roots to minimize seed dispersal.",
+            "Sites must be monitored and removal repeated for the weed to be eradicated."
+        ],
+        "chemicalRemoval": [
+            "If on your own dry property, you may spray individual plants during summer with an herbicide containing glyphosate (such as Round-up and Touchdown) so they are just wet. Follow the herbicide label. (Never apply herbicides to standing water unless labeled as aquatic-safe)."
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: spiked loosestrife",
+            "EDIBLENESS: Young leaves (best gathered in autumn) are edible in small amounts (high in tannins), and roots (best gathered in fall) can also be eaten. Best consumed cooked." ,
+            "ORIGIN: Europe, Asia and northern Africa",
+            "Found in wetlands/marshes; grows in a couple feet of water or near shorelines." ,
+            "If soil is disturbed during control efforts, it is best to reseed the disturbed area with a desired native species, with the help of fertilizers, to prevent new establishment of weeds."
+        ]
+    },
+    {
+        "scientificName": "volutaria tubuliflora",
+        "commonName": "Egyptian Knapweed",
+        "description": [
+            "Has pink-purple flowers and lobed hairy leaves."
+        ],
+        "suggestions": [
+            "Work gloves and long sleeves/pants.",
+            "Its bitter sap may cause allergic reactions and may be toxic to animals, especially horses."
+        ],
+        "manualRemoval": [
+            "Clean all equipment, clothing, footwear, gloves, and vehicles before and after entering the invasion area — seeds can easily attach to items and travel far, spreading growth.",
+            "Grasp the plant at the base and pull upwards, removing as much of the roots as possible. Make sure to use gloves to avoid skin irritation from its sap.",
+            "Place removed plants in a secure trash bag to prevent any flowers or seeds from spilling out." ,
+            "Monitor infestations several times a season for at least 3 years to ensure eradication."
+        ],
+        "chemicalRemoval": [
+
+        ],
+        "otherInfo": [
+            "ALSO KNOWN AS: Mediterranean knapweed, desert knapweed",
+            "EDIBLENESS: Not edible.",
+            "ORIGIN: northern Africa and the Mediterranean Basin",
+            "Grows in disturbed areas, along roadsides, and in a variety of habitats from deserts to coastal areas to shrub-dominated vegetation.",
+            "Highest rated invasive plant in San Diego."
+        ]
+    }
+]
