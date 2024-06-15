@@ -12,7 +12,7 @@ import cv2
 
 
 PORT = 3001
-MODEL_LOAD_PATH = "arise_fullsave"
+MODEL_LOAD_PATH = "arise_fullsave_2-9"
 REMOVE_JSON_PATH = "remove.json"
 INPUT_SIZE = 256
 LABELS = [
@@ -33,6 +33,7 @@ LABELS = [
 app = flask.Flask(__name__)
 
 model = keras.models.load_model(MODEL_LOAD_PATH)
+model.save_weights("arise_weights.h5")
 
 def create_response(value):
     response = flask.jsonify(value)
