@@ -13,7 +13,7 @@ import cv2
 
 PORT = 3001
 MODEL_LOAD_PATH = "arise_fullsave_2-9"
-REMOVE_JSON_PATH = "remove.json"
+PLANT_PROPERTIES_PATH = "plant_properties.json"
 INPUT_SIZE = 256
 LABELS = [
     "aegilops_triuncialis",
@@ -42,8 +42,8 @@ def create_response(value):
 def classify():
     model = keras.models.load_model(MODEL_LOAD_PATH)
 
-    with open(REMOVE_JSON_PATH, "r") as f:
-        remove_json = json.load(f)
+    with open(PLANT_PROPERTIES_PATH, "r") as f:
+        plant_properties = json.load(f)
 
 
 
@@ -60,14 +60,28 @@ def classify():
 
     np_prediction = model.predict(cnn_input)[0]
     prediction = map(lambda x: float(x), list(np_prediction))
-    predictions_with_labels = list(map(
+    predictions_with_labels = (map(
         lambda prediction_and_label: {
             "confidence": prediction_and_label[0],
-            "label": prediction_and_label[1],
-            "remove_instructions": remove_json.get(prediction_and_label[1], remove_json.get("lipsum"))
+            "label": prediction_and_label[1].replace("_", " ")
         },
         zip(prediction, LABELS))
     )
+
+
+    def get_info_from_json(label):
+        for plant in plant_properties:
+            if plant["scientificName"] == label:
+                return plant
+
+    predictions_with_labels = list(map(
+        lambda prediction_and_label: {
+            **prediction_and_label,
+            "info": get_info_from_json(prediction_and_label["label"])
+        },
+        predictions_with_labels
+    ))
+
     predictions_with_labels.sort(reverse=True, key=lambda x: x["confidence"])
     best_predictions = predictions_with_labels[:5]
 

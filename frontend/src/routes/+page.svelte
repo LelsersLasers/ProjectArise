@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import BulletList from '$lib/BulletList.svelte';
 
     // const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
     // const FLASK_URL = 'http://64.98.192.13:3001/';
@@ -10,8 +11,7 @@
     let title = 'Project ARISE';
 
     let overlay = false;
-    let remove_plant = "";
-    let remove_instructions = [];
+    let remove_info = {};
 
 
     let fileInput;
@@ -64,7 +64,6 @@
             .then(data => {
                 results = data;
                 for (let i = 0; i < results.length; i++) {
-                    results[i]['label_display'] = results[i]['label'].replace('_', ' ');
                     results[i]['confidence_display'] = (results[i]['confidence'] * 100).toFixed(0);
                 }
                 
@@ -83,8 +82,7 @@
     }
 
     function resultClick(i) {
-        remove_plant = results[i]['label_display'];
-        remove_instructions = results[i]['remove_instructions'];
+        remove_info = results[i]['info'];
         overlay = true;
     }
 
@@ -177,70 +175,88 @@
 
     #overlay {
         position: fixed;
-        width: 100%;
+        width: 100vw;
         height: 100%;
         background-color: var(--bgGreen);
         z-index: 2;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    #overlay hr {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-color: white;
     }
 
     #overlay h1 {
         text-align: center;
         text-transform: capitalize;
-        font-style: italic;
-        margin-top: 80px;
-        margin-bottom: 50px;
-        font-weight: normal;
+        margin-top: 20px;
+        margin-bottom: 0px;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    #overlay h3 {
+    #overlay #scientificName {
+        text-align: center;
+        text-transform: capitalize;
+        font-style: italic;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+    }
+
+    #overlay .sectionHeader {
         text-align: center;
         text-decoration: underline;
-        font-weight: normal;
+        margin-bottom: 10px;
     }
 
-    #overlay ol {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
+    #overlay #description {
+        margin-top: 0px;
+    }
 
-        padding-left: 0;
-
-        list-style: none;
-        counter-reset: item;
-    }
-    #overlay li {
-        counter-increment: item;
-        margin-bottom: 15px;
-    }
-    #overlay li:before {
-        content: counter(item) ".) ";
-        font-weight: bold;
-        display: inline-block;
-        margin-right: 10px;
-    }
 
     #overlay .stickyFooter {
         position: fixed;
         left: 0;
         bottom: 0;
-        background: var(--darkGreen);
+        background: var(--bgGreen);
         color: white;
-        width: 97vw;
+        /* width: 97vw; */
+        width: 100%;
 
-        margin-bottom: 2vw;
+        /* margin-bottom: 2vw; */
         margin-top: 3vw;
-        margin-left: 1.5vw;
-        margin-right: 1.5vw;
-        border-radius: 20px;
+        /* margin-left: 1.5vw; */
+        /* margin-right: 1.5vw; */
+        /* border-radius: 20px; */
 
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
 
         display: flex;
         justify-content: center;
         align-items: center;
         
         cursor: pointer;
+    }
+    #backButton {
+        width: 95%;
+        max-width: 300px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: var(--darkGreen);
+        color: white;
+        border-radius: 20px;
+        padding: 10px;
     }
 </style>
 
@@ -253,18 +269,38 @@
 
 {#if overlay}
     <div id="overlay">
-        <h1>{remove_plant}</h1>
+        <h1>{remove_info["commonName"]}</h1>
+        <p id="scientificName">{remove_info["scientificName"]}</p>
 
-        <h3>HOW TO REMOVE</h3>
 
-        <ol>
-            {#each remove_instructions as step, i}
-                <li>{step}</li>
-            {/each}
-        </ol>
+        <hr />
 
-        <div class="stickyFooter zeroBottomMargin textAlignCenter" on:click={back}>
-            Back
+        <h3 id="description" class="sectionHeader">Description</h3>
+        <BulletList content={remove_info["description"]} />
+
+        <h3 class="sectionHeader">Hazards/Protective Equipment</h3>
+        <BulletList content={remove_info["suggestions"]} />
+
+        <h3 class="sectionHeader">Manual Removal</h3>
+        <BulletList content={remove_info["manualRemoval"]} />
+
+        {#if remove_info["chemicalRemoval"].length > 0}
+            <h3 class="sectionHeader">Chemical Removal</h3>
+            <BulletList content={remove_info["chemicalRemoval"]} />
+        {/if}
+
+        <h3 class="sectionHeader">Other Information</h3>
+        <BulletList content={remove_info["otherInfo"]} />
+
+        <br />
+        <br />
+        <br />
+
+
+        <div class="stickyFooter">
+            <div id="backButton" on:click={back}>
+                Back
+            </div>
         </div>
     </div>
 {:else}
@@ -283,7 +319,7 @@
                 {#each results as result, i}
                     <div class="result" on:click={() => resultClick(i)}>
                         <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
-                        <p class="resultBase resultLabel">{result["label_display"]}</p>
+                        <p class="resultBase resultLabel">{result["label"]}</p>
                         <p class="resultBase resultArrow">&rsaquo;</p>
                     </div>
                 {/each}
