@@ -202,7 +202,7 @@
         height: 100%;
         background-color: var(--bgGreen);
         z-index: 2;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
     }
 
