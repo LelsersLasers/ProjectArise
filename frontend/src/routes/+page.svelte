@@ -6,8 +6,6 @@
     // const FLASK_URL = 'http://64.98.192.13:3001/';
     // const FLASK_URL = 'http://localhost:3001/';
 
-    const LS_KEY = 'ARISE';
-
     let title = 'Project ARISE';
 
     let overlay = false;
@@ -168,6 +166,18 @@
         float: right;
     }
 
+    @media (min-width: 768px) {
+        #underlay img {
+            width: 100%;
+            max-width: 375px;
+
+            max-height: 375px;
+        }
+        #underlay #results {
+            max-width: 400px;
+        }
+    }
+
     #underlay .none {
         display: none;
     }
@@ -185,11 +195,15 @@
 
     #overlay hr {
         width: 90%;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin: 0 auto;
         margin-top: 20px;
         margin-bottom: 20px;
         border-color: white;
+    }
+    @media (min-width: 768px) {
+        #overlay hr {
+            width: 55%;
+        }
     }
 
     #overlay h1 {

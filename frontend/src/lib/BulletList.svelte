@@ -1,11 +1,11 @@
 <script>
-	export let content;
+    export let content;
 
 </script>
 
 <style>
-	ul {
-		width: 85%;
+    ul {
+        width: 85%;
         max-width: 300px;
         margin: 0 auto;
 
@@ -14,16 +14,22 @@
         list-style: none;
         counter-reset: item;
 
-		padding-left: 18px;
-	}
-	li {
-		margin-bottom: 10px;
-		position: relative;
-	}
-	li:before {
-		position: absolute;
-		vertical-align: middle;
-		left: -16px;
+        padding-left: 18px;
+    }
+    @media (min-width: 768px) {
+        ul {
+            width: 50%;
+            max-width: 50%;
+        }
+    }
+    li {
+        margin-bottom: 10px;
+        position: relative;
+    }
+    li:before {
+        position: absolute;
+        vertical-align: middle;
+        left: -16px;
 
         content: "-";
         font-weight: bold;
@@ -35,7 +41,7 @@
 
 
 <ul>
-	{#each content as item}
-		<li>{item}</li>
-	{/each}
+    {#each content as item}
+        <li>{item}</li>
+    {/each}
 </ul>
