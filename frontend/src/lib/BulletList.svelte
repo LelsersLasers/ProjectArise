@@ -25,6 +25,7 @@
     li {
         margin-bottom: 10px;
         position: relative;
+        word-break: break-word;
     }
     li:before {
         position: absolute;
