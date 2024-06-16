@@ -344,6 +344,14 @@
             </div>
         {:else if results == null}
             <p class="info">Click icon to take or upload a photo</p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         {:else}
             <p class="info">Tap on an item to view removal instructions</p>
             <div id="results">
