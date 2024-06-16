@@ -43,6 +43,6 @@
 
 <ul>
     {#each content as item}
-        <li>{item}</li>
+        <li>{@html item}</li>
     {/each}
 </ul>
