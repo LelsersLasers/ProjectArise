@@ -164,7 +164,7 @@
     }
     #underlay .resultConfidence {
         font-weight: bold;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     }
     #underlay .resultLabel {
         text-transform: capitalize;
@@ -234,7 +234,7 @@
         font-style: italic;
         margin-bottom: 0px;
         margin-top: 10px;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
 
     }
 
