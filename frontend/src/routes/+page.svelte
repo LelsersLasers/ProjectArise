@@ -208,18 +208,24 @@
         margin-bottom: 20px;
         border-color: white;
     }
-    @media (min-width: 768px) {
-        #overlay hr {
-            width: 55%;
-        }
-    }
 
     #overlay h1 {
         text-align: center;
+        margin: 0 auto;
         text-transform: capitalize;
         margin-top: 20px;
         margin-bottom: 0px;
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        width: 95%;
+    }
+
+    @media (min-width: 768px) {
+        #overlay hr {
+            width: 55%;
+        }
+        #overlay h1 {
+            width: 50%;
+        }
     }
 
     #overlay #scientificName {
