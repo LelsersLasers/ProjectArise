@@ -26,7 +26,7 @@
             }
         })
 
-    let loading = true;
+    let loading = false;
     let loading_text = 'LOADING...';
     let loading_text_animation = 3;
     setInterval(() => {
@@ -91,14 +91,9 @@
         overlay = true;
     }
 
-
     function back() {
         overlay = false;
     }
-
-    onMount(() => {
-        loading = false;
-    });
 </script>
 
 <style>
