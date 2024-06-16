@@ -18,13 +18,21 @@
 
     let results = null;
 
+    let temp_results = [...Array(5).keys()]
+        .map(_ => {
+            return {
+                'label': 'Loading...',
+                'confidence_display': 0.0,
+            }
+        })
+
     let loading = true;
     let loading_text = 'LOADING...';
     let loading_text_animation = 3;
     setInterval(() => {
         loading_text_animation = (loading_text_animation + 1) % 4;
         loading_text = 'LOADING' + '.'.repeat(loading_text_animation);
-    }, 100);
+    }, 120);
 
 
     // Placeholder image; less work to just make it base64 like this than use static files
@@ -65,7 +73,6 @@
                     results[i]['confidence_display'] = (results[i]['confidence'] * 100).toFixed(0);
                 }
                 
-                // saveToLocalStorage();
                 console.log(results);
                 loading = false;
             })
@@ -104,6 +111,10 @@
         background-color: var(--bgYellow);
 
         padding-top: 24px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #underlay img {
@@ -115,7 +126,7 @@
         max-height: 300px;
 
         /* margin-top: 24px; */
-        margin-bottom: 24px;
+        /* margin-bottom: 24px; */
         margin-left: auto;
         margin-right: auto;
 
@@ -133,6 +144,7 @@
         max-width: 325px;
 
         margin: 0 auto;
+        margin-bottom: 20px;
     }
     #underlay .result {
         padding-top: 10px;
@@ -146,7 +158,8 @@
         background-color: var(--darkGreen);
         color: white;
         border-radius: 20px;
-
+    }
+    #underlay .live {
         cursor: pointer;
     }
     #underlay .resultBase {
@@ -325,13 +338,22 @@
 
         {#if loading}
             <p class="info">{loading_text}</p>
+            <div id="results">
+                {#each temp_results as temp_result}
+                    <div class="result">
+                        <p class="resultBase resultConfidence">{temp_result["confidence_display"]}%</p>
+                        <p class="resultBase resultLabel">{temp_result["label"]}</p>
+                        <p class="resultBase resultArrow">&#9203;</p>
+                    </div>
+                {/each}
+            </div>
         {:else if results == null}
             <p class="info">Click icon to take or upload a photo</p>
         {:else}
             <p class="info">Tap on an item to view removal instructions</p>
             <div id="results">
                 {#each results as result, i}
-                    <div class="result" on:click={() => resultClick(i)}>
+                    <div class="result live" on:click={() => resultClick(i)}>
                         <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
                         <p class="resultBase resultLabel">{result["label"]}</p>
                         <p class="resultBase resultArrow">&rsaquo;</p>
