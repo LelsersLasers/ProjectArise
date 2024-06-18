@@ -21,7 +21,8 @@
     let temp_results = [...Array(5).keys()]
         .map(_ => {
             return {
-                'label': 'Loading...',
+                'commonName': 'Loading...',
+                'scientificName': 'Loading...',
                 'confidence_display': 0.0,
             }
         })
@@ -116,9 +117,9 @@
         display: block;
         
         width: 100%;
-        max-width: 300px;
+        max-width: 225px;
 
-        max-height: 300px;
+        max-height: 225px;
 
         /* margin-top: 24px; */
         /* margin-bottom: 24px; */
@@ -149,10 +150,13 @@
 
         margin: 8px;
 
-
         background-color: var(--darkGreen);
         color: white;
         border-radius: 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     #underlay .live {
         cursor: pointer;
@@ -164,11 +168,19 @@
     }
     #underlay .resultConfidence {
         font-weight: bold;
-        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        font-size: larger;
     }
-    #underlay .resultLabel {
+    #underlay .vstack {
+        width: 100%;
+        margin-left: 8px;
+    }
+    #underlay .resultCommon {
         text-transform: capitalize;
+    }
+    #underlay .resultScientific {
         font-style: italic;
+        font-weight: 100;
+        font-size: smaller;
     }
     #underlay .resultArrow {
         float: right;
@@ -177,9 +189,9 @@
     @media (min-width: 768px) {
         #underlay img {
             width: 100%;
-            max-width: 375px;
+            max-width: 325px;
 
-            max-height: 375px;
+            max-height: 325px;
         }
         #underlay #results {
             max-width: 400px;
@@ -230,12 +242,9 @@
 
     #overlay #scientificName {
         text-align: center;
-        text-transform: capitalize;
         font-style: italic;
         margin-bottom: 0px;
         margin-top: 10px;
-        /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
-
     }
 
     #overlay .sectionHeader {
@@ -343,7 +352,11 @@
                 {#each temp_results as temp_result}
                     <div class="result">
                         <p class="resultBase resultConfidence">{temp_result["confidence_display"]}%</p>
-                        <p class="resultBase resultLabel">{temp_result["label"]}</p>
+                        <div class="vstack">
+                            <p class="resultBase resultCommon">{temp_result["commonName"]}</p>
+                            <br />
+                            <p class="resultBase resultScientific">{temp_result["scientificName"]}</p>
+                        </div>
                         <p class="resultBase resultArrow">&#9203;</p>
                     </div>
                 {/each}
@@ -364,7 +377,11 @@
                 {#each results as result, i}
                     <div class="result live" on:click={() => resultClick(i)}>
                         <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
-                        <p class="resultBase resultLabel">{result["label"]}</p>
+                        <div class="vstack">
+                            <p class="resultBase resultCommon">{result["info"]["commonName"]}</p>
+                            <br />
+                            <p class="resultBase resultScientific">{result["info"]["scientificName"]}</p>
+                        </div>
                         <p class="resultBase resultArrow">&rsaquo;</p>
                     </div>
                 {/each}
