@@ -76,7 +76,7 @@ def classify():
 
     def get_info_from_json(label):
         for plant in plant_properties:
-            if plant["scientificName"] == label:
+            if plant["scientificName"].lower() == label:
                 return plant
 
     predictions_with_labels = list(map(
