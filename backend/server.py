@@ -50,8 +50,6 @@ def classify():
     with open(PLANT_PROPERTIES_PATH, "r") as f:
         plant_properties = json.load(f)
 
-
-
     image_bs64 = flask.request.json.get("image_b64", None)
     if image_bs64 is None:
         return create_response({"error": "No image_b64 provided"})
