@@ -338,7 +338,7 @@
     <div id="underlay">
         <input class="none" type="file" id="file" name="file" accept="image/*" on:input={upload} bind:this={fileInput} />
 
-        <img src={input_b64} on:click={imageClick} bind:this={img} />
+        <img src={input_b64} on:click={imageClick} />
 
         {#if loading}
             <p class="info">{loading_text}</p>
