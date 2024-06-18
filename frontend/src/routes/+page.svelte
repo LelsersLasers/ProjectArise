@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from 'svelte';
     import BulletList from '$lib/BulletList.svelte';
 
     const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
@@ -13,7 +12,6 @@
 
 
     let fileInput;
-    let img;
 
 
     let results = null;
