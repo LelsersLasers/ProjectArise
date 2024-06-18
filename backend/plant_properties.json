@@ -1,6 +1,6 @@
 [
     {
-        "scientificName": "aegilops triuncialis",
+        "scientificName": "Aegilops triuncialis",
         "commonName": "Barbed Goatgrass",
         "description": [
             "Usually 20-50 cm tall (8-20 inches)",
@@ -25,7 +25,7 @@
         ]
     },
     {
-        "scientificName": "arundo donax",
+        "scientificName": "Arundo donax",
         "commonName": "Giant Reed",
         "description": [
             "Large grasses up to about 20 feet tall with hollow cane-like stems that are about 0.25 to 2 inches thick." ,
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "scientificName": "centaurea calcitrapa",
+        "scientificName": "Centaurea calcitrapa",
         "commonName": "Purple Star Thistle",
         "description": [
             "Grows up to 3 feet tall.",
@@ -81,7 +81,7 @@
         ]
     },
     {
-        "scientificName": "centaurea stoebe",
+        "scientificName": "Centaurea stoebe",
         "commonName": "Spotted Knapweed",
         "description": [
             "1-2 foot tall rosette base.",
@@ -111,7 +111,7 @@
         ]
     },
     {
-        "scientificName": "cortaderia selloana",
+        "scientificName": "Cortaderia selloana",
         "commonName": "Pampas Grass",
         "description": [
             "Can grow up to about 13 feet tall and 6 feet wide.",
@@ -136,7 +136,7 @@
         ]
     },
     {
-        "scientificName": "cynara cardunculus",
+        "scientificName": "Cynara cardunculus",
         "commonName": "Artichoke Thistle",
         "description": [
             "Spiny, lobed, grey-green leaves and grooved stalks with spines.",
@@ -161,8 +161,8 @@
         ]
     },
     {
+        "scientificName": "Euphorbia terracina",
         "commonName": "Carnation Spurge",
-        "scientificName": "euphorbia terracina",
         "description": [
             "Hairless, slender, and can branch from the base and further up the plant.",
             "Stems are green to reddish in color, especially near the base.",
@@ -189,7 +189,7 @@
         ]
     },
     {
-        "scientificName": "hypericum canariense",
+        "scientificName": "Hypericum canariense",
         "commonName": "Canary Island St. John's Wort",
         "description": [
             "Shrub that can grow up to 1 meter, or 3.3 feet tall.",
@@ -214,7 +214,7 @@
         ]
     },
     {
-        "scientificName": "lepidium latifolium",
+        "scientificName": "Lepidium latifolium",
         "commonName": "Perennial Pepperweed",
         "description": [
             "Generally 1-3 feet tall, but can grow up to 6 feet tall.",
@@ -240,7 +240,7 @@
         ]
     },
     {
-        "scientificName": "lythrum salicaria",
+        "scientificName": "Lythrum salicaria",
         "commonName": "Purple Loosestrife",
         "description": [
             "Stands about 3-10 feet tall (averages 5 feet).",
@@ -270,7 +270,7 @@
         ]
     },
     {
-        "scientificName": "volutaria tubuliflora",
+        "scientificName": "Volutaria tubuliflora",
         "commonName": "Egyptian Knapweed",
         "description": [
             "Has pink-purple flowers and lobed hairy leaves."
