@@ -94,7 +94,11 @@ def classify():
 
 @app.route('/')
 def home():
-    return 'Project Arise Backend'
+    return """
+    <h1>Project Arise Backend</h1>
+    <p>Live classification site at <a href="https://projectarise.vercel.app/">projectarise.vercel.app</a></p>
+    <p>Main information site at <a href="https://www.project-arise.org/">project-arise.org</a></p>
+    """
 
 if __name__ == "__main__":
     app.run(port=PORT, host="0.0.0.0")
