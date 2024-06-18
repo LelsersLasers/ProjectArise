@@ -184,6 +184,7 @@
     }
     #underlay .resultArrow {
         float: right;
+        font-size: larger;
     }
 
     @media (min-width: 768px) {
@@ -264,17 +265,12 @@
         bottom: 0;
         background: var(--bgGreen);
         color: white;
-        /* width: 97vw; */
         width: 100%;
 
-        /* margin-bottom: 2vw; */
         margin-top: 3vw;
-        /* margin-left: 1.5vw; */
-        /* margin-right: 1.5vw; */
-        /* border-radius: 20px; */
 
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 6px;
+        padding-bottom: 6px;
 
         display: flex;
         justify-content: center;
@@ -293,7 +289,7 @@
         background-color: var(--darkGreen);
         color: white;
         border-radius: 20px;
-        padding: 10px;
+        padding: 12px;
     }
 </style>
 
