@@ -10,6 +10,8 @@
     let overlay = false;
     let remove_info = {};
 
+    let disclaimer = false;
+
 
     let fileInput;
 
@@ -82,7 +84,8 @@
     }
 
     function imageClick() {
-        fileInput.click();
+        // fileInput.click();
+        disclaimer = true;
     }
 
     function resultClick(i) {
@@ -92,6 +95,11 @@
 
     function back() {
         overlay = false;
+    }
+
+    function disclaimerClick() {
+        disclaimer = false;
+        fileInput.click();
     }
 </script>
 
@@ -289,6 +297,60 @@
         border-radius: 20px;
         padding: 12px;
     }
+
+    #disclaimer {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #disclaimer #disclaimerContent {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        background-color: var(--bgGreen);
+        border-radius: 20px;
+        padding: 0px;
+    }
+
+    #disclaimer #disclaimerHeader {
+        background-color: var(--darkGreen);
+        color: white;
+        text-align: center;
+        margin: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 12px;
+    }
+    #disclaimer #disclaimerHeader h3 {
+        margin: 0;
+        font-weight: normal;
+    }
+    #disclaimer p {
+        padding: 12px;
+        text-align: center;
+    }
+
+    #disclaimer .point {
+        margin: 0;
+    }
+
+    #disclaimer #disclaimerButton {
+        background-color: var(--darkGreen);
+        color: white;
+        text-align: center;
+        padding: 12px;
+        border-radius: 20px;
+        margin: 12px;
+        cursor: pointer;
+    }
 </style>
 
 
@@ -296,6 +358,22 @@
     <title>{title}</title>
 </svelte:head>
 
+
+{#if disclaimer}
+    <div id="disclaimer">
+        <div id="disclaimerContent">
+            <div id="disclaimerHeader">
+                <h3>Remember</h3>
+            </div>
+            <p>ARISE may not always be correct.</p>
+            <p class="point">Always be aware of your surroundings, stay safe, and don't trespass.</p>
+            <p class="point">Respect other living things by not harassing or touching them.</p>
+            <div id="disclaimerButton" on:click={disclaimerClick}>
+                Continue
+            </div>
+        </div>
+    </div>
+{/if}
 
 
 {#if overlay}
