@@ -11,6 +11,7 @@
     let remove_info = {};
 
     let disclaimer = false;
+    let show_disclaimer = true;
 
 
     let fileInput;
@@ -84,8 +85,11 @@
     }
 
     function imageClick() {
-        // fileInput.click();
-        disclaimer = true;
+        if (show_disclaimer) {
+            disclaimer = true;
+        } else {
+            fileInput.click();
+        }
     }
 
     function resultClick(i) {
@@ -99,6 +103,7 @@
 
     function disclaimerClick() {
         disclaimer = false;
+        show_disclaimer = false;
         fileInput.click();
     }
 </script>
