@@ -10,6 +10,9 @@
     let overlay = false;
     let remove_info = {};
 
+    let disclaimer = false;
+    let show_disclaimer = true;
+
 
     let fileInput;
 
@@ -82,7 +85,11 @@
     }
 
     function imageClick() {
-        fileInput.click();
+        if (show_disclaimer) {
+            disclaimer = true;
+        } else {
+            fileInput.click();
+        }
     }
 
     function resultClick(i) {
@@ -90,8 +97,18 @@
         overlay = true;
     }
 
-    function back() {
+    function overlayBack() {
         overlay = false;
+    }
+
+    function disclaimerClick() {
+        disclaimer = false;
+        show_disclaimer = false;
+        fileInput.click();
+    }
+
+    function disclaimerBack() {
+        disclaimer = false;
     }
 </script>
 
@@ -289,6 +306,69 @@
         border-radius: 20px;
         padding: 12px;
     }
+
+    #disclaimer {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #disclaimer #disclaimerContent {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -80%);
+        width: 90%;
+        max-width: 400px;
+        background-color: var(--bgGreen);
+        border-radius: 20px;
+        padding: 0px;
+    }
+
+    #disclaimer #disclaimerHeader {
+        background-color: var(--darkGreen);
+        color: white;
+        text-align: center;
+        margin: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 12px;
+    }
+    #disclaimer #disclaimerHeader h3 {
+        margin: 0;
+        font-weight: normal;
+    }
+    #disclaimer p {
+        padding: 12px;
+        text-align: center;
+    }
+
+    #disclaimer .point {
+        margin: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 0px;
+        padding-bottom: 16px;
+    }
+
+    #disclaimer .pointFirst {
+        padding-top: 12px;
+    }
+
+    #disclaimer #disclaimerButton {
+        background-color: var(--darkGreen);
+        color: white;
+        text-align: center;
+        padding: 12px;
+        border-radius: 20px;
+        margin: 12px;
+        margin-top: 0px;
+        cursor: pointer;
+    }
 </style>
 
 
@@ -296,6 +376,23 @@
     <title>{title}</title>
 </svelte:head>
 
+
+{#if disclaimer}
+    <div id="disclaimer" on:click={disclaimerBack}>
+        <div id="disclaimerContent" on:click={e => e.stopPropagation()}>
+            <div id="disclaimerHeader">
+                <h3>Remember</h3>
+            </div>
+            <p class="point pointFirst">ARISE may not always be correct.</p>
+            <p class="point">Always be aware of your surroundings and stay safe.</p>
+            <p class="point">Don't trespass; do not remove anything from private property that you do not own.</p>
+            <p class="point">Children may require adult supervision.</p>
+            <div id="disclaimerButton" on:click={disclaimerClick}>
+                Continue
+            </div>
+        </div>
+    </div>
+{/if}
 
 
 {#if overlay}
@@ -329,7 +426,7 @@
 
 
         <div class="stickyFooter">
-            <div id="backButton" on:click={back}>
+            <div id="backButton" on:click={overlayBack}>
                 Back
             </div>
         </div>
