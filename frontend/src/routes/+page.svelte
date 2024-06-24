@@ -97,7 +97,7 @@
         overlay = true;
     }
 
-    function back() {
+    function overlayBack() {
         overlay = false;
     }
 
@@ -105,6 +105,10 @@
         disclaimer = false;
         show_disclaimer = false;
         fileInput.click();
+    }
+
+    function disclaimerBack() {
+        disclaimer = false;
     }
 </script>
 
@@ -365,8 +369,8 @@
 
 
 {#if disclaimer}
-    <div id="disclaimer">
-        <div id="disclaimerContent">
+    <div id="disclaimer" on:click={disclaimerBack}>
+        <div id="disclaimerContent" on:click={e => e.stopPropagation()}>
             <div id="disclaimerHeader">
                 <h3>Remember</h3>
             </div>
@@ -412,7 +416,7 @@
 
 
         <div class="stickyFooter">
-            <div id="backButton" on:click={back}>
+            <div id="backButton" on:click={overlayBack}>
                 Back
             </div>
         </div>
