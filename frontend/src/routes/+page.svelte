@@ -3,7 +3,7 @@
 
     const FLASK_URL = 'https://projectarise.pythonanywhere.com/';
     // const FLASK_URL = 'http://64.98.192.13:3001/';
-    // const FLASK_URL = 'http://localhost:3001/';
+    const FLASK_URL = 'http://localhost:3001/';
 
     let title = 'Project ARISE';
 
@@ -321,7 +321,7 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -80%);
         width: 90%;
         max-width: 400px;
         background-color: var(--bgGreen);
@@ -349,6 +349,14 @@
 
     #disclaimer .point {
         margin: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 0px;
+        padding-bottom: 16px;
+    }
+
+    #disclaimer .pointFirst {
+        padding-top: 12px;
     }
 
     #disclaimer #disclaimerButton {
@@ -358,6 +366,7 @@
         padding: 12px;
         border-radius: 20px;
         margin: 12px;
+        margin-top: 0px;
         cursor: pointer;
     }
 </style>
@@ -374,9 +383,10 @@
             <div id="disclaimerHeader">
                 <h3>Remember</h3>
             </div>
-            <p>ARISE may not always be correct.</p>
-            <p class="point">Always be aware of your surroundings, stay safe, and don't trespass.</p>
-            <p class="point">Respect other living things by not harassing or touching them.</p>
+            <p class="point pointFirst">ARISE may not always be correct.</p>
+            <p class="point">Always be aware of your surroundings and stay safe.</p>
+            <p class="point">Don't trespass; do not remove anything from private property that you do not own.</p>
+            <p class="point">Children may require adult supervision.</p>
             <div id="disclaimerButton" on:click={disclaimerClick}>
                 Continue
             </div>
