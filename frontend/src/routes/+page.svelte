@@ -28,7 +28,7 @@
             }
         })
 
-    let loading = true;
+    let loading = false;
 
 
     // Placeholder image; less work to just make it base64 like this than use static files
