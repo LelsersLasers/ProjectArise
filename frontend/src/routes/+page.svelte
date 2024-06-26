@@ -19,14 +19,28 @@
 
     let results = null;
 
-    let temp_results = [...Array(5).keys()]
-        .map(_ => {
+    let ALL_TEMP_RESULTS = [...Array(5).keys()]
+        .map(i => {
             return {
                 'commonName': 'Loading...',
                 'scientificName': 'Loading...',
                 'confidence_display': 0.0,
+                'i': i,
             }
-        })
+        });
+    let temp_results = [];
+    let temp_results_built = false;
+    function buildTempResults() {
+        const cancel_interval = setInterval(() => {
+            if (temp_results.length == ALL_TEMP_RESULTS.length) {
+                clearInterval(cancel_interval);
+                temp_results_built = true;
+            } else {
+                temp_results.push(ALL_TEMP_RESULTS[temp_results.length]);
+                temp_results = [...temp_results];
+            }
+        }, 75);
+    }
 
     let loading = false;
 
@@ -51,6 +65,7 @@
 
     function go() {
         loading = true;
+        buildTempResults();
 
         const url = FLASK_URL + 'classify';
         fetch(url, {
@@ -218,6 +233,10 @@
         justify-content: space-between;
         align-items: center;
     }
+    #underlay .resultFadeIn {
+        opacity: 0;
+        animation: fadeIn 0.25s forwards;
+    }
     #underlay .live {
         cursor: pointer;
     }
@@ -230,6 +249,12 @@
         font-weight: bold;
         font-size: larger;
     }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
     #underlay .vstack {
         width: 100%;
         margin-left: 8px;
@@ -492,8 +517,8 @@
                 <div class="dot"></div>
             </div>
             <div id="results">
-                {#each temp_results as temp_result}
-                    <div class="result">
+                {#each temp_results as temp_result (temp_result["i"])}
+                    <div class={temp_results_built ? "result" : "result resultFadeIn"}>
                         <p class="resultBase resultConfidence">{temp_result["confidence_display"]}%</p>
                         <div class="vstack">
                             <p class="resultBase resultCommon">{temp_result["commonName"]}</p>
