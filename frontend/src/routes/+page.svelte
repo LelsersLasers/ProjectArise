@@ -139,11 +139,9 @@
 
     #underlay img {
         display: block;
-        
-        width: 100%;
-        max-width: 225px;
 
-        max-height: 225px;
+        width: 225px;
+        height: 225px;
 
         margin-left: auto;
         margin-right: auto;
@@ -274,10 +272,8 @@
 
     @media (min-width: 768px) {
         #underlay img {
-            width: 100%;
-            max-width: 325px;
-
-            max-height: 325px;
+            width: 325px;
+            height: 325px;
         }
         #underlay #results {
             max-width: 400px;
