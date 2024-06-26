@@ -19,22 +19,30 @@
 
     let results = null;
 
-    let temp_results = [...Array(5).keys()]
-        .map(_ => {
+    let ALL_TEMP_RESULTS = [...Array(5).keys()]
+        .map(i => {
             return {
                 'commonName': 'Loading...',
                 'scientificName': 'Loading...',
                 'confidence_display': 0.0,
+                'i': i,
             }
-        })
+        });
+    let temp_results = [];
+    let temp_results_built = false;
+    function buildTempResults() {
+        const cancel_interval = setInterval(() => {
+            if (temp_results.length == ALL_TEMP_RESULTS.length) {
+                clearInterval(cancel_interval);
+                temp_results_built = true;
+            } else {
+                temp_results.push(ALL_TEMP_RESULTS[temp_results.length]);
+                temp_results = [...temp_results];
+            }
+        }, 75);
+    }
 
     let loading = false;
-    let loading_text = 'LOADING...';
-    let loading_text_animation = 3;
-    setInterval(() => {
-        loading_text_animation = (loading_text_animation + 1) % 4;
-        loading_text = 'LOADING' + '.'.repeat(loading_text_animation);
-    }, 120);
 
 
     // Placeholder image; less work to just make it base64 like this than use static files
@@ -57,6 +65,7 @@
 
     function go() {
         loading = true;
+        buildTempResults();
 
         const url = FLASK_URL + 'classify';
         fetch(url, {
@@ -136,8 +145,6 @@
 
         max-height: 225px;
 
-        /* margin-top: 24px; */
-        /* margin-bottom: 24px; */
         margin-left: auto;
         margin-right: auto;
 
@@ -147,6 +154,59 @@
 
     #underlay .info {
         text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 1em;
+    }
+
+    #underlay .loader {
+        height: 1em;
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 15px;
+        margin-bottom: calc(1em + 15px);
+    }
+
+    .dot {
+        height: 1em;
+        width: 1em;
+        animation: load ease-in-out 2.5s infinite;
+        border-radius: 100%;
+        background-color: black;
+        border: 2px solid var(--bgYellow);
+        position: absolute;
+    }
+
+    .dot:first-child {
+        background-color: #8cc759;
+        animation-delay: 0.5s;
+    }
+    .dot:nth-child(2) {
+        background-color: #8c6daf;
+        animation-delay: 0.4s;
+    }
+    .dot:nth-child(3) {
+        background-color: #ef5d74;
+        animation-delay: 0.3s;
+    }
+    .dot:nth-child(4) {
+        background-color: #f9a74b;
+        animation-delay: 0.2s;
+    }
+    .dot:nth-child(5) {
+        background-color: #60beeb;
+        animation-delay: 0.1s;
+    }
+    .dot:nth-child(6) {
+        background-color: #fbef5a;
+        animation-delay: 0s;
+    }
+
+    @keyframes load {
+        15% { transform: translateX(0); }
+        45% { transform: translateX(calc(200px - 1em)); }
+        65% { transform: translateX(calc(200px - 1em)); }
+        95% { transform: translateX(0); }
     }
 
 
@@ -173,6 +233,10 @@
         justify-content: space-between;
         align-items: center;
     }
+    #underlay .resultFadeIn {
+        opacity: 0;
+        animation: fadeIn 0.25s forwards;
+    }
     #underlay .live {
         cursor: pointer;
     }
@@ -185,6 +249,12 @@
         font-weight: bold;
         font-size: larger;
     }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
     #underlay .vstack {
         width: 100%;
         margin-left: 8px;
@@ -211,6 +281,10 @@
         }
         #underlay #results {
             max-width: 400px;
+        }
+
+        #underlay .loader {
+            margin-bottom: 15px !important;
         }
     }
 
@@ -438,10 +512,17 @@
         <img src={input_b64} on:click={imageClick} />
 
         {#if loading}
-            <p class="info">{loading_text}</p>
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
             <div id="results">
-                {#each temp_results as temp_result}
-                    <div class="result">
+                {#each temp_results as temp_result (temp_result["i"])}
+                    <div class={temp_results_built ? "result" : "result resultFadeIn"}>
                         <p class="resultBase resultConfidence">{temp_result["confidence_display"]}%</p>
                         <div class="vstack">
                             <p class="resultBase resultCommon">{temp_result["commonName"]}</p>
