@@ -164,7 +164,7 @@
         width: 200px;
         margin: 0 auto;
         margin-top: 15px;
-        margin-bottom: 15px;
+        margin-bottom: calc(1em + 15px);
     }
 
     .dot {
@@ -281,6 +281,10 @@
         }
         #underlay #results {
             max-width: 400px;
+        }
+
+        #underlay .loader {
+            margin-bottom: 15px !important;
         }
     }
 
