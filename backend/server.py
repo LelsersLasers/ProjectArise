@@ -90,6 +90,12 @@ def classify():
 
     return create_response(best_predictions)
 
+@app.route("/wakeup", methods=["GET"])
+@flask_cors.cross_origin()
+def wakeup():
+    # Trigger cold start
+    return create_response({"message": "Backend is awake"})
+
 @app.route('/')
 def home():
     return """
