@@ -96,6 +96,11 @@
     function imageClick() {
         if (show_disclaimer) {
             disclaimer = true;
+            const url = FLASK_URL + 'wakeup';
+            fetch(url)
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         } else {
             fileInput.click();
         }
