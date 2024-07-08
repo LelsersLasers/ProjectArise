@@ -90,7 +90,7 @@
                 for (let i = 0; i < results.length; i++) {
                     results[i]['confidence_display'] = (results[i]['confidence'] * 100).toFixed(0);
 
-                    for (range in LABEL_COLOR_RANGES) {
+                    for (let range in LABEL_COLOR_RANGES) {
                         const lower = range.split('-')[0];
                         const upper = range.split('-')[1];
 
