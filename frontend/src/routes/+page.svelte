@@ -5,6 +5,12 @@
     // const FLASK_URL = 'http://64.98.192.13:3001/';
     // const FLASK_URL = 'http://localhost:3001/';
 
+    const LABEL_COLOR_RANGES = {
+        '0-0.3': 'rgb(88, 129, 87)',
+        '0.3-0.7': 'rgb(131, 131, 131)',
+        '0.7-1': 'rgb(146, 85, 85)',
+    }
+
     let title = 'Project ARISE';
 
     let overlay = false;
@@ -26,6 +32,7 @@
                 'scientificName': 'Loading...',
                 'confidence_display': 0.0,
                 'i': i,
+                'color': 'rgb(88, 129, 87)',
             }
         });
     let temp_results = [];
@@ -82,6 +89,16 @@
                 results = data;
                 for (let i = 0; i < results.length; i++) {
                     results[i]['confidence_display'] = (results[i]['confidence'] * 100).toFixed(0);
+
+                    for (range in LABEL_COLOR_RANGES) {
+                        const lower = range.split('-')[0];
+                        const upper = range.split('-')[1];
+
+                        if (results[i]['confidence'] >= lower && results[i]['confidence'] < upper) {
+                            results[i]['color'] = LABEL_COLOR_RANGES[range];
+                            break;
+                        }
+                    }
                 }
                 
                 console.log(results);
@@ -228,7 +245,7 @@
 
         margin: 8px;
 
-        background-color: var(--darkGreen);
+        /* background-color: var(--darkGreen); */
         color: white;
         border-radius: 20px;
 
@@ -523,7 +540,7 @@
             </div>
             <div id="results">
                 {#each temp_results as temp_result (temp_result["i"])}
-                    <div class={temp_results_built ? "result" : "result resultFadeIn"}>
+                    <div class={temp_results_built ? "result" : "result resultFadeIn"} style="background-color: {temp_result["color"]}">
                         <p class="resultBase resultConfidence">{temp_result["confidence_display"]}%</p>
                         <div class="vstack">
                             <p class="resultBase resultCommon">{temp_result["commonName"]}</p>
@@ -548,7 +565,7 @@
             <p class="info">Tap on an item to view removal instructions</p>
             <div id="results">
                 {#each results as result, i}
-                    <div class="result live" on:click={() => resultClick(i)}>
+                    <div class="result live" on:click={() => resultClick(i)} style="background-color: {result["color"]}">
                         <p class="resultBase resultConfidence">{result["confidence_display"]}%</p>
                         <div class="vstack">
                             <p class="resultBase resultCommon">{result["info"]["commonName"]}</p>
